@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src https://api.web3forms.com; form-action https://api.web3forms.com; base-uri 'none'; object-src 'none'">
+    <title>Freundesbrief abonnieren</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell" aria-live="polite">
+      <section class="phone-app" aria-label="Mehrstufiges Kontaktformular">
+        <header class="app-header">
+          <div class="header-copy">
+            <h1>Freundesbrief abonnieren</h1>
+          </div>
+          <img class="brand-logo" src="bmo-logo.png" alt="BMO">
+        </header>
+
+        <div class="progress" aria-hidden="true">
+          <span class="progress-line is-active"></span>
+          <span class="progress-line"></span>
+          <span class="progress-line"></span>
+        </div>
+
+        <div class="form-window">
+          <form class="form-track" id="subscriptionForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+            <!-- Web3Forms-Konfiguration:
+              Der Web3Forms Access Key ist direkt eingetragen, damit die
+              statische Seite ohne Build-Schritt auf GitHub Pages funktioniert.
+              Hinweis: Web3Forms Access Keys sind laut Anbieter öffentliche Formular-Keys, keine Secret API Keys.
+            -->
+            <input type="hidden" name="access_key" value="6fb59629-c6d2-42b6-92ff-a1c8f537b81f">
+            <input type="hidden" name="subject" value="Neue Freundesbrief-Anmeldung">
+            <input type="hidden" name="from_name" value="BMO Freundesbrief Formular">
+            <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <section class="step-panel is-active" data-step="start">
+              <div class="copy-block">
+                <p class="step-label">Schritt 1 von 3</p>
+                <h2>Wähle deinen Versandweg.</h2>
+                <p>Der Freundesbrief erscheint dreimal im Jahr. Du erhältst Neuigkeiten, Einblicke und Updates von der BMO.</p>
+              </div>
+
+              <div class="choice-grid" role="radiogroup" aria-label="Versandart auswählen">
+                <button class="choice-card" type="button" data-route="email" aria-pressed="false">
+                  <span class="choice-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path d="M4.75 6.75h14.5v10.5H4.75z"></path>
+                      <path d="m5.5 7.5 6.5 5 6.5-5"></path>
+                    </svg>
+                  </span>
+                  <span class="choice-text">
+                    <strong>Per E-Mail</strong>
+                    <small>Schnell, papierlos und direkt im Postfach.</small>
+                  </span>
+                  <span class="choice-check" aria-hidden="true"></span>
+                </button>
+
+                <button class="choice-card" type="button" data-route="post" aria-pressed="false">
+                  <span class="choice-icon warm" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path d="M5 7.25h14v10.5H5z"></path>
+                      <path d="M7.5 10h9"></path>
+                      <path d="M7.5 13h5.5"></path>
+                    </svg>
+                  </span>
+                  <span class="choice-text">
+                    <strong>Per Post</strong>
+                    <small>Als gedruckter Brief an deine Adresse.</small>
+                  </span>
+                  <span class="choice-check" aria-hidden="true"></span>
+                </button>
+              </div>
+
+              <p class="privacy-note">Unverbindlich. Keine Weitergabe deiner Daten.</p>
+            </section>
+
+            <section class="step-panel" data-step="email">
+              <button class="back-button" type="button" data-back aria-label="Zurück">
+                <span aria-hidden="true">‹</span>
+              </button>
+
+              <div class="copy-block">
+                <p class="step-label">Schritt 2 von 3</p>
+                <h2>E-Mail-Adresse</h2>
+                <p>Wir verwenden diese Adresse ausschließlich für den Freundesbrief.</p>
+              </div>
+
+              <label class="field">
+                <span>E-Mail-Adresse</span>
+                <input name="email" type="email" autocomplete="email" placeholder="name@example.com" maxlength="120" required>
+              </label>
+
+              <p class="form-error" data-error></p>
+
+              <button class="primary-button" type="button" data-next="person">Weiter</button>
+            </section>
+
+            <section class="step-panel" data-step="post">
+              <button class="back-button" type="button" data-back aria-label="Zurück">
+                <span aria-hidden="true">‹</span>
+              </button>
+
+              <div class="copy-block">
+                <p class="step-label">Schritt 2 von 3</p>
+                <h2>Postanschrift</h2>
+                <p>Trage die Adresse ein, an die wir den Freundesbrief senden dürfen.</p>
+              </div>
+
+              <div class="address-grid">
+                <label class="field street-field">
+                  <span>Straße</span>
+                  <input name="street" type="text" autocomplete="address-line1" placeholder="Musterstraße" maxlength="100" required>
+                </label>
+
+                <label class="field number-field">
+                  <span>Hausnummer</span>
+                  <input name="houseNumber" type="text" autocomplete="address-line2" placeholder="12a" maxlength="20" required>
+                </label>
+
+                <label class="field zip-field">
+                  <span>PLZ</span>
+                  <input name="zip" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="12345" maxlength="16" pattern="[A-Za-z0-9 \-]{3,16}" required>
+                </label>
+
+                <label class="field city-field">
+                  <span>Wohnort</span>
+                  <input name="city" type="text" autocomplete="address-level2" placeholder="Musterstadt" maxlength="80" required>
+                </label>
+
+                <label class="field country-field">
+                  <span>Land</span>
+                  <input name="country" type="text" autocomplete="country-name" placeholder="Deutschland" maxlength="80" required>
+                </label>
+              </div>
+
+              <p class="form-error" data-error></p>
+
+              <button class="primary-button" type="button" data-next="person">Weiter</button>
+            </section>
+
+            <section class="step-panel" data-step="person">
+              <button class="back-button" type="button" data-back aria-label="Zurück">
+                <span aria-hidden="true">‹</span>
+              </button>
+
+              <div class="copy-block">
+                <p class="step-label">Schritt 3 von 3</p>
+                <h2>Persönliche Angaben</h2>
+                <p>Diese Angaben helfen uns bei der persönlichen Ansprache.</p>
+              </div>
+
+              <label class="field">
+                <span>Anrede</span>
+                <select name="salutation" required>
+                  <option value="">Bitte auswählen</option>
+                  <option>Herr</option>
+                  <option>Frau</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Vorname</span>
+                <input name="firstName" type="text" autocomplete="given-name" placeholder="Max" maxlength="80" required>
+              </label>
+
+              <label class="field">
+                <span>Nachname</span>
+                <input name="lastName" type="text" autocomplete="family-name" placeholder="Mustermann" maxlength="80" required>
+              </label>
+
+              <label class="check-row">
+                <input name="commitment" type="checkbox" required>
+                <span>Unverbindlich abonnieren und 3× jährlich erhalten</span>
+              </label>
+
+              <label class="check-row">
+                <input name="privacyConsent" type="checkbox" required>
+                <span>Ich habe die <a href="rechtliches.html#datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten gemäß DSGVO zu.</span>
+              </label>
+
+              <p class="form-error" data-error></p>
+
+              <p class="form-status" data-submit-status role="status" aria-live="polite"></p>
+
+              <button class="primary-button" type="submit" data-submit-button disabled>Abonnieren</button>
+            </section>
+
+            <section class="step-panel success-panel" data-step="success">
+              <span class="success-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="m6.5 12.5 3.5 3.5 7.5-8"></path>
+                </svg>
+              </span>
+              <h2>Vielen Dank!</h2>
+              <p>Deine Anmeldung wurde erfolgreich übermittelt. Wir haben deine Angaben erhalten und melden uns, falls Rückfragen entstehen.</p>
+              <button class="secondary-button" type="button" data-reset>Neu starten</button>
+            </section>
+          </form>
+        </div>
+
+        <footer class="app-footer">
+          <a href="rechtliches.html#impressum">Impressum</a>
+          <a href="rechtliches.html#datenschutz">Datenschutzerklärung</a>
+        </footer>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
